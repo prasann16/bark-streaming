@@ -1,4 +1,5 @@
-from bark import SAMPLE_RATE, generate_audio, preload_models, generate_text_semantic, semantic_to_waveform
+from bark.api import semantic_to_waveform
+from bark.generation import (generate_text_semantic,preload_models)
 import numpy as np
 import io
 import base64
