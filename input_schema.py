@@ -3,6 +3,13 @@ INPUT_SCHEMA = {
         'datatype': 'STRING',
         'required': True,
         'shape': [1],
-        'example': ["Hello, my name is Suno. And, uh — and I like pizza. [laughs] But I also have other interests such as playing tic tac toe."]
+        'example': ["Bark is a generative AI model that can turn text into audio. It works across different languages and can handle speech, music, and ambient noises. 
+In this example, we are testing how to split a large paragraph into smaller chunks and process them using Bark for audio generation."]
+    }, 
+    "speaker": {
+        'datatype': 'STRING',
+        'required': True,
+        'shape': [1],
+        'example': ["v2/en_speaker_1"]
     }
 }
