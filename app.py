@@ -1,14 +1,17 @@
 from bark import SAMPLE_RATE, generate_audio, preload_models
+from bark import generate_text_semantic, semantic_to_waveform
 import time
 import numpy as np
 import io
 import base64
-import soundfile as sf
+import soundfile as SF
+import nltk
 
 class InferlessPythonModel:
     
     def initialize(self):
         preload_models()
+        nltk.download('punkt')
         
     def infer(self, inputs):
         prompt = inputs["prompt"]
