@@ -13,3 +13,5 @@ In this example, we are testing how to split a large paragraph into smaller chun
         'example': ["v2/en_speaker_1"]
     }
 }
+IS_STREAMING_OUTPUT = True
+
