@@ -3,7 +3,7 @@ INPUT_SCHEMA = {
         'datatype': 'STRING',
         'required': True,
         'shape': [1],
-        'example': ["Bark is a generative AI model that can turn text into audio. It works across different languages and can handle speech, music, and ambient noises."]
+        'example': ["Bark is a generative AI model that can turn text into audio It works across different languages and can handle speech music and ambient noises"]
     }, 
     "speaker": {
         'datatype': 'STRING',
