@@ -11,6 +11,7 @@ class InferlessPythonModel:
     def initialize(self):
         preload_models()
         nltk.download('punkt')
+        nltk.download('punkt_tab')
         
     def infer(self, inputs, stream_output_handler):
         prompt = inputs["prompt"]
