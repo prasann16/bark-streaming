@@ -7,11 +7,20 @@ import base64
 import soundfile as sf
 import nltk
 import time
+import os
+
+os.environ["SUNO_OFFLOAD_CPU"] = "True"
+os.environ["SUNO_USE_SMALL_MODELS"] = "True"
 
 class InferlessPythonModel:
     
     def initialize(self):
-        preload_models()
+        preload_models(
+            text_use_gpu=True,
+            coarse_use_gpu=True,
+            fine_use_gpu=True,
+            codec_use_gpu=True
+        )
         nltk.download('punkt')
         nltk.download('punkt_tab')
         
@@ -30,10 +39,11 @@ class InferlessPythonModel:
                 history_prompt=speaker,
                 temp=0.6,
                 min_eos_p=0.05,
+                silent=True
             )
             print("Time to generate semantic tokens: ", time.time() - start_time)
 
-            audio_array = semantic_to_waveform(semantic_tokens, history_prompt=speaker)
+            audio_array = semantic_to_waveform(semantic_tokens, history_prompt=speaker, temp=0.7, silent=True)
             print("Time to generate audio array: ", time.time() - start_time)
 
             # Combine the current sentence audio with silence
