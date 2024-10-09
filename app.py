@@ -27,6 +27,9 @@ class InferlessPythonModel:
     def infer(self, inputs, stream_output_handler):
         start_time = time.time()
         prompt = inputs["prompt"]
+        # Ensure the prompt is properly decoded as UTF-8
+        if isinstance(prompt, bytes):
+            prompt = prompt.decode('utf-8')
         speaker = inputs["speaker"]
         sentences = nltk.sent_tokenize(prompt)
         silence = np.zeros(int(0.25 * SAMPLE_RATE))  # quarter second of silence
@@ -43,7 +46,7 @@ class InferlessPythonModel:
             )
             print("Time to generate semantic tokens: ", time.time() - start_time)
 
-            audio_array = semantic_to_waveform(semantic_tokens, history_prompt=speaker, temp=0.7, silent=True)
+            audio_array = semantic_to_waveform(semantic_tokens, history_prompt=speaker, temp=0.6, silent=True)
             print("Time to generate audio array: ", time.time() - start_time)
 
             # Combine the current sentence audio with silence
